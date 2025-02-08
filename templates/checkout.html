@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/checkout.css') }}">>
+</head>
+<body>
+    <div class="checkout-container">
+        <h1>Finalizați plata</h1>
+        <form action="{{ url_for('checkout') }}" method="POST">
+            <!-- Nom d'utilisateur -->
+            <div class="form-group">
+                <label for="username">Numele de utilizator</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <!-- Service choisi (par exemple, VIP) -->
+            <div class="form-group">
+                <label for="item_name">Alege serviciul</label>
+                <select id="item_name" name="item_name" required>
+                    <option value="VIP">VIP</option>
+                    <option value="Modérateur">Modérateur</option>
+                    <!-- Ajouter d'autres options si nécessaire -->
+                </select>
+            </div>
+
+            <!-- Montant (affiché à l'utilisateur) -->
+            <div class="form-group">
+                <label for="price_display">Preț</label>
+                <input type="text" id="price_display" name="price_display" disabled>
+            </div>
+
+            <!-- Montant (caché, en fonction du service choisi) -->
+            <input type="hidden" id="amount" name="amount" required>
+
+            <!-- Bouton de paiement -->
+            <button type="submit" class="checkout-btn">Plătește prin PayPal</button>
+        </form>
+    </div>
+
+    <script>
+        // Mise à jour du montant basé sur le service sélectionné
+        document.getElementById('item_name').addEventListener('change', function() {
+            var service = this.value;
+            var amountInput = document.getElementById('amount');
+            var priceDisplay = document.getElementById('price_display');
+
+            // Définir les prix prédéfinis en EUR
+            var prices = {
+                "VIP": "5.00",  // prix en EUR
+                "Modérateur": "10.00"  // prix en EUR
+            };
+
+            // Mettre à jour le montant caché et le champ de prévisualisation
+            amountInput.value = prices[service] || "0.00";
+            priceDisplay.value = prices[service] + " EUR";  // Afficher le prix sélectionné à l'utilisateur
+        });
+
+        // Mettre à jour le montant par défaut
+        document.getElementById('amount').value = "5.00";  // Définir le prix de "VIP" par défaut
+        document.getElementById('price_display').value = "5.00 EUR";  // Afficher le prix par défaut pour "VIP"
+    </script>
+</body>
+</html>

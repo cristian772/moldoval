@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plată Reușită</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="payment-success-container">
+        <h1>Plata a fost realizată cu succes!</h1>
+        <p>Felicitări! Ai obținut <strong>{{ message }}</strong>. Acum poți accesa serviciul dorit pe serverul nostru!</p>
+        <p>Îți mulțumim pentru achiziție și te așteptăm în continuare pe server.</p>
+        <a href="/" class="btn">Întoarce-te la magazin</a>
+    </div>
+</body>
+</html>
