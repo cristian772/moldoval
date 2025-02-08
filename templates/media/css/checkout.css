@@ -1,0 +1,145 @@
+/* Reset general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Contenitorul principal al paginii */
+.checkout-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #f7f7f7;
+}
+
+.checkout-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Titluri */
+.checkout-container h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.checkout-item-info {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.item-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.item-description {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.item-price {
+    font-size: 20px;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Formular de plată */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #fafafa;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Butonul de plată */
+.checkout-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.checkout-btn:hover {
+    background-color: #218838;
+}
+
+.checkout-btn:active {
+    background-color: #1e7e34;
+}
+
+/* Design responsiv pentru mobile */
+@media screen and (max-width: 768px) {
+    .checkout-container {
+        padding: 25px;
+    }
+
+    .item-name {
+        font-size: 20px;
+    }
+
+    .item-description {
+        font-size: 14px;
+    }
+
+    .item-price {
+        font-size: 18px;
+    }
+
+    .checkout-btn {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
