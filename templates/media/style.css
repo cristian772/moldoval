@@ -744,271 +744,137 @@ body {
         margin: .25rem;
     }
 }
-/* Style spécifique à la page checkout */
-.checkout-page {
-    width: 100%;
-    max-width: 900px;
-    margin: 50px auto;
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.checkout-page h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 2.5em;
-    color: #333;
-}
-
-/* Style du conteneur pour les informations produit dans la page checkout */
-.checkout-item-preview {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #eee;
-}
-
-.checkout-item-preview img {
-    max-width: 120px;
-    border-radius: 8px;
-}
-
-.checkout-item-info {
-    text-align: left;
-}
-
-.checkout-item-info .item-name {
-    font-size: 1.6em;
-    font-weight: bold;
-    color: #333;
-}
-
-.checkout-item-info .item-description {
-    font-size: 1.2em;
-    color: #777;
-}
-
-.checkout-item-info .item-price {
-    font-size: 1.4em;
-    color: #ff6f61;
-    font-weight: bold;
-}
-
-/* Formulaire d'informations utilisateur dans checkout */
-.checkout-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-}
-
-/* Label des champs du formulaire */
-.checkout-form label {
-    font-size: 1.2em;
-    color: #555;
-    text-align: left;
-}
-
-/* Champs de saisie du formulaire */
-.checkout-form input[type="text"],
-.checkout-form select {
-    padding: 12px;
-    font-size: 1em;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    transition: border 0.3s;
-}
-
-/* Focus sur les champs du formulaire */
-.checkout-form input[type="text"]:focus,
-.checkout-form select:focus {
-    border-color: #ff6f61;
-    outline: none;
-}
-
-/* Bouton de soumission */
-.checkout-form button[type="submit"] {
-    background-color: #ff6f61;
+.checkout-btn {
+    background-color: #007bff; /* Couleur bleue */
     color: white;
-    padding: 14px;
-    font-size: 1.2em;
+    font-family: 'AcromBold', sans-serif;
+    font-size: 18px;
+    padding: 16px 36px;
     border: none;
-    border-radius: 8px;
+    border-radius: 50px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
-/* Animation du bouton au survol */
-.checkout-form button[type="submit"]:hover {
-    background-color: #ff3e2f;
-    transform: scale(1.05);
+.checkout-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.2); /* Effet de lumière */
+    transition: width 0.4s, height 0.4s, top 0.4s, left 0.4s;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
 }
 
-/* Style des pages de succès et annulation */
-.payment-success-container, .payment-cancelled-container {
-    text-align: center;
-    padding: 50px;
+.checkout-btn:hover {
+    background-color: #0056b3; /* Couleur plus foncée au survol */
+    transform: scale(1.05); /* Agrandir légèrement le bouton au survol */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Ombre plus marquée */
 }
 
-.payment-success-container h1 {
-    color: #4CAF50;  /* Pour succès */
-    font-size: 2.5em;
+.checkout-btn:hover::before {
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
 }
 
-.payment-cancelled-container h1 {
-    color: #F44336;  /* Pour annulation */
+.checkout-btn:active {
+    background-color: #004085; /* Couleur encore plus foncée au clic */
+    transform: scale(0.98); /* Rétrécir au clic */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Moins d'ombre au clic */
 }
 
-.payment-success-container p, .payment-cancelled-container p {
-    font-size: 1.2em;
-    color: #333;
+.checkout-btn:focus {
+    outline: none; /* Retirer l'encadrement au focus */
 }
 
-/* Bouton pour revenir à l'accueil */
-.payment-success-container .btn, .payment-cancelled-container .btn {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 20px;
+.checkout-btn:disabled {
+    background-color: #b8daff; /* Couleur plus claire pour un bouton désactivé */
+    color: #6c757d; /* Couleur du texte désactivé */
+    cursor: not-allowed; /* Curseur non cliquable */
 }
 
-.payment-success-container .btn:hover, .payment-cancelled-container .btn:hover {
-    background-color: #45a049;
+.checkout-btn span {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
-
-/* Style du conteneur principal */
 .shop_container {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+    background-color: #f9f9f9;
     padding: 20px;
-}
-
-/* Formulaire de checkout */
-.checkout-form {
-    background-color: #ffffff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
+}
+
+.service-label {
+    font-family: 'AcromBold', sans-serif;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
     text-align: center;
 }
 
-/* Titre */
-.checkout-form h2 {
-    font-size: 1.5em;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-/* Label */
-.form-label {
-    font-size: 1em;
-    color: #555;
-    margin-bottom: 8px;
-    display: block;
-}
-
-/* Sélecteur */
-.form-select {
+.service-select {
     width: 100%;
-    padding: 10px;
-    font-size: 1em;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-family: 'Acrom', sans-serif;
     border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 15px;
-    background-color: #f9f9f9;
-    transition: border-color 0.3s ease;
-}
-
-.form-select:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-/* Bouton de paiement */
-.checkout-btn {
+    border: 2px solid #28a745;
     background-color: #007bff;
-    color: white;
+    margin-bottom: 20px;
+    outline: none;
+    appearance: none; /* Pour un aspect uniforme dans tous les navigateurs */
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.service-select:focus {
+    border-color: #0056b3; /* Changement de couleur du bord quand sélectionné */
+}
+
+.service-select option {
+    font-size: 18px; /* Augmenter la taille des options */
+    padding: 10px; /* Ajouter du padding pour que le texte soit plus lisible */
+    background-color: #f1f1f1; /* Un fond clair pour les options */
+    color: #333; /* Texte sombre pour une bonne lisibilité */
+}
+
+.service-select option:hover {
+    background-color: #e5e5e5; /* Change la couleur de fond au survol */
+}
+
+.checkout-btn {
+    background-color: #218838;
+    color: black;
     border: none;
     padding: 12px 20px;
-    font-size: 1em;
-    cursor: pointer;
     border-radius: 5px;
+    font-family: 'AcromBold', sans-serif;
+    font-size: 18px;
+    cursor: pointer;
     width: 100%;
     transition: background-color 0.3s ease;
 }
 
 .checkout-btn:hover {
-    background-color: #0056b3;
+    background-color: #218838; /* Couleur plus foncée au survol */
 }
 
-
-/* Section des articles dans le shop */
-.shop_container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-}
-
-.shop_item {
-    width: 30%;
-    background-color: grey;
-    padding: 5px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s;
-}
-
-.shop_item:hover {
-    transform: scale(1.05);
-}
-
-.shop_item_img {
-    width: 50%;
-    border-radius: 2px;
-}
-
-.shop_item_name {
-    font-size: 1.5em;
-    color: #333;
-    margin-top: 10px;
-}
-
-.shop_item_description {
-    color: #555;
-    font-size: 1.1em;
-    margin: 10px 0;
-}
-
-.shop_item_price {
-    font-size: 1.2em;
-    color: #28a745;
-    margin: 10px 0;
-}
-
-.shop_item_button {
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.shop_item_button:hover {
-    background-color: #0056b3;
+.checkout-btn:active {
+    background-color: #1e7e34; /* Couleur au clic */
 }
