@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import paypalrestsdk
 import os
 
+from rcon.source import Client
 app = Flask(__name__, static_folder='templates/media')
 
 # Configuration PayPal
@@ -18,7 +19,7 @@ def index():
 @app.route('/checkout-go', methods=['GET'])
 def checkout_go():
     service = request.args.get('service', 'VIP')  # Valeur par défaut VIP si rien n'est sélectionné
-    prices = {'VIP': 5.00, 'ExtraLife': 3.00, 'Flight': 10.00}
+    prices = {'King': 10.00, 'Prince': 5.00, 'Knigth': 3.00}
     price = prices.get(service, 5.00)  # Récupérer le prix en fonction du service choisi
 
     return render_template('checkout.html', service=service, price=price)
@@ -28,7 +29,9 @@ def checkout_go():
 @app.route('/checkout', methods=['POST'])
 def checkout():
     # Vérifier et récupérer les valeurs du formulaire
-    username = request.form.get('username')
+
+    global username
+    username= request.form.get('username')
     item_name = request.form.get("item_name")
     amount = request.form.get("amount")
 
@@ -81,7 +84,10 @@ def checkout():
 def payment_success():
     payer_id = request.args.get('PayerID')
     payment_id = request.args.get('paymentId')
+    with Client('5.231.230.9', 25575, passwd='FJueshg12') as client:
+        response = client.run('lp user', username, 'parent add explorer')
 
+    print(response)
     if not payer_id or not payment_id:
         return "Error: missing payment details."
 
