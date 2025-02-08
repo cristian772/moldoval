@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for
 import paypalrestsdk
 import os
 
-from rcon.source import Client
 app = Flask(__name__, static_folder='templates/media')
 
 # Configuration PayPal
@@ -84,10 +83,6 @@ def checkout():
 def payment_success():
     payer_id = request.args.get('PayerID')
     payment_id = request.args.get('paymentId')
-    with Client('5.231.230.9', 25575, passwd='FJueshg12') as client:
-        response = client.run('lp user', username, 'parent add explorer')
-
-    print(response)
     if not payer_id or not payment_id:
         return "Error: missing payment details."
 
